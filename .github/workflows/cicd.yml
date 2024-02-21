@@ -37,10 +37,13 @@ jobs:
         run: npm run lint
       - name: "Application: Test"
         working-directory: ./app
-        run: npm run test
+        run: npm run test:pipeline
       - name: "Application: Build"
         working-directory: ./app
         run: npm run build
+      - name: Update Badge
+        if: github.ref == format('refs/heads/{0}', github.event.repository.default_branch)
+        uses: we-cli/coverage-badge-action@main
       - name: Complete
         run: echo "🍏 This job's status is ${{ job.status }}."
 

@@ -9,6 +9,7 @@
     "dev:net:ssl": "export DEV_SSL=true && vite --host --port 5173",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "test": "export VITE_CONTACT_API_URL=https://api.example.com && export VITE_RECAPTCHA_KEY=token && vitest run --coverage",
+    "test:pipeline": "npm run test && mkdir -p ../coverage && mv ./coverage/coverage-summary.json ../coverage",
     "build": "tsc && vite build",
     "build:prod": "npm run lint && npm run test && npm run build",
     "analyze": "vite-bundle-visualizer -o visualize-bundle.html",
