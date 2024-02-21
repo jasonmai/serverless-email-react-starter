@@ -1,0 +1,27 @@
+# Warning: editing this template may break the provisioning scripts
+region = {
+  main = "us-east-1"
+  # us-east-1 is required for Edge Lambdas, ACM, and possibly other resources
+  us-east-1 = "us-east-1"
+}
+
+common_tags = {
+  application = "example.com-web"
+}
+
+domain_name = "example.com"
+
+#cors_origin = "*"
+cors_origin = "https://example.com"
+
+emails_to_create = ["mail@example.com", "hello@example.com"]
+personal_emails_to_verify = [
+  "my_personal_email@gmail.com",
+]
+
+s3_email_inbox_prefix          = "inbox"
+s3_contact_form_message_prefix = "contact-form-inbox"
+
+recaptcha_verification_url = "https://www.google.com/recaptcha/api/siteverify"
+
+web_dist_dir = "../app/dist"

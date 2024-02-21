@@ -1,0 +1,46 @@
+name: Build
+run-name: Code changes from ${{ github.actor }} 🚀
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Prepare
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.x
+      - name: "Lambda: Install"
+        working-directory: ./lambdas
+        run: npm ci
+      - name: "Lambda: Lint"
+        working-directory: ./lambdas
+        run: npm run lint
+      - name: "Lambda: Test"
+        working-directory: ./lambdas
+        run: npm run test
+      - name: "Lambda: Build"
+        working-directory: ./lambdas
+        run: npm run build
+      - name: "Application: Install"
+        working-directory: ./app
+        run: npm ci
+      - name: "Application: Lint"
+        working-directory: ./app
+        run: npm run lint
+      - name: "Application: Test"
+        working-directory: ./app
+        run: npm run test
+      - name: "Application: Build"
+        working-directory: ./app
+        run: npm run build
+      - name: Complete
+        run: echo "🍏 This job's status is ${{ job.status }}."
+
