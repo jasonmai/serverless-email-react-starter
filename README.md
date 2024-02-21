@@ -1,6 +1,6 @@
 # Vite + React + TypeScript + Google reCAPTCHA + Email <br>AWS Serverless Static Website Starter Kit
 [![Build](https://github.com/jasonmai/serverless-email-react-starter/actions/workflows/cicd.yml/badge.svg)](https://github.com/jasonmai/serverless-email-react-starter/actions/workflows/cicd.yml)
-TODO: coverage badge here
+[![cov](https://jasonmai.github.io/serverless-email-react-starter/badges/coverage.svg)](https://github.com/jasonmai/serverless-email-react-starter/actions)
 
 :sparkles:A completely serverless, end-to-end, :zap:static website starter application that includes the full
 [Terraform](https://www.terraform.io/) [AWS](https://aws.amazon.com/) infrastructure 💯, lambdas required for backend
