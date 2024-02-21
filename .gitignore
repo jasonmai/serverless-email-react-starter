@@ -1,0 +1,9 @@
+.terraform
+.idea
+node_modules
+dist
+web_dist
+coverage
+terraform/secrets.tfvars
+app/.env
+app/visualize-bundle.html

@@ -1,0 +1,35 @@
+Received: from test.outbound.protection.outlook.com (test-mail.outbound.protection.outlook.com [12.34.56.78])
+ by inbound-smtp.us-east-1.amazonaws.com with SMTP id 1234567890
+ for from@testing.com;
+ Fri, 01 Jan 2024 00:00:00 +0000 (UTC)
+Received-SPF: pass (spfCheck: domain of mail.sometest.com designates 12.34.56.78 as permitted sender) client-ip=12.34.56.78; envelope-from=test@sometest.com; helo=test-mail.outbound.protection.outlook.com;
+Authentication-Results: amazonses.com;
+ spf=pass (spfCheck: domain of mail.sometest.com designates 12.34.56.78 as permitted sender) client-ip=12.34.56.78; envelope-from=test@sometest.com; helo=test-mail.outbound.protection.outlook.com;
+ dkim=pass header.i=@mail.sometest.com;
+ dmarc=pass header.from=mail.sometest.com;
+Received: from TEST.PROD.OUTLOOK.COM (0000:1234:123:A::00)
+ by TEST2.PROD.OUTLOOK.COM (0000:1234:123:A::01) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 23.45.6700.89; Fri, 01 Jan
+ 2024 00:00:00 +0000
+Received: from TEST.PROD.OUTLOOK.COM
+ ([0000:1111:2222:3333:4444]) by TEST.PROD.OUTLOOK.COM
+ ([0000:1111:2222:3333:4444%5]) with mapi id 34.56.7800.900; Fri, 01 Jan 2024
+ 00:00:00 +0000
+From: test at test@sometest.com <from@testing.com>
+To: "from@testing.com" <from@testing.com>
+Subject: Test
+Thread-Topic: Test
+Thread-Index: test-index
+Date: Fri, 01 Jan 2024 00:00:00 +0000
+Accept-Language: en-US
+Content-Language: en-US
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=mail.sometest.com;
+Content-Type: text/plain; charset="us-ascii"
+Content-ID: <1234567890@sometest.onmicrosoft.com>
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+Reply-To: test <test@sometest.com>
+
+test message body from SES
