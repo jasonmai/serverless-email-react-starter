@@ -4,12 +4,18 @@ import Event = AWSCloudFrontFunction.Event
 import Request = AWSCloudFrontFunction.Request
 
 describe('Viewer request Cloudfront function', () => {
-  let mockEvent: Event
+  let mockEvent: Event, consoleLogSpy: jest.SpyInstance
+  beforeAll(() => {
+    consoleLogSpy = jest.spyOn(console, 'log').mockImplementation(() => null)
+  })
   beforeEach(() => {
     mockEvent = JSON.parse(JSON.stringify(mockCloudfrontFunctionEvent))
     mockEvent.request.headers.host = {
       value: 'test.com',
     }
+  })
+  afterAll(() => {
+    consoleLogSpy.mockRestore()
   })
   describe('Event object does not have a request', () => {
     it('should throw a Missing request error', async () => {
@@ -18,6 +24,16 @@ describe('Viewer request Cloudfront function', () => {
     })
   })
   describe('Request ends with trailing slash "/" or does not end with index.html', () => {
+    it('should log event viewer and request info only if request is for root "/"', async () => {
+      mockEvent.request.uri = '/'
+      await handler(mockEvent)
+      expect(consoleLogSpy).toHaveBeenCalledTimes(2)
+      expect(consoleLogSpy).toHaveBeenNthCalledWith(1, mockEvent.viewer)
+      expect(consoleLogSpy).toHaveBeenNthCalledWith(
+        2,
+        JSON.stringify(mockEvent.request, null, 2),
+      )
+    })
     it('should not make any changes if it is root URL', async () => {
       mockEvent.request.uri = '/'
       const actualRequest = (await handler(mockEvent)) as Request

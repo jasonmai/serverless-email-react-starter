@@ -85,11 +85,19 @@ resource "aws_cloudfront_origin_access_control" "static_website" {
   signing_protocol                  = "sigv4"
 }
 
+resource "aws_cloudwatch_log_group" "static_website_viewer_request" {
+  provider          = aws.us-east-1
+  name              = "/aws/cloudfront/function/${replace(var.domain_name, ".", "_")}-viewer-request"
+  retention_in_days = 30
+  tags              = var.common_tags
+}
+
 resource "aws_cloudfront_function" "static_website_viewer_request" {
-  name    = "${replace(var.domain_name, ".", "_")}-viewer-request"
-  runtime = "cloudfront-js-2.0"
-  code    = file("${path.root}/../lambdas/dist/viewer-request.js")
-  publish = true
+  depends_on = [aws_cloudwatch_log_group.static_website_viewer_request]
+  name       = "${replace(var.domain_name, ".", "_")}-viewer-request"
+  runtime    = "cloudfront-js-2.0"
+  code       = file("${path.root}/../lambdas/dist/viewer-request.js")
+  publish    = true
 }
 
 resource "aws_cloudfront_distribution" "static_website" {
