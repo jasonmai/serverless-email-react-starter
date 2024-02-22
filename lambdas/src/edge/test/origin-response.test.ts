@@ -35,7 +35,9 @@ describe('Origin response Cloudfront Lambda@Edge function', () => {
       )
   })
   it('should throw an error if there event has no record', async () => {
+    const consoleErrorSpy = jest.spyOn(console, 'error')
     mockEvent.Records = []
     await expect(handler(mockEvent)).rejects.toThrow('Missing event record.')
+    consoleErrorSpy.mockRestore()
   })
 })
