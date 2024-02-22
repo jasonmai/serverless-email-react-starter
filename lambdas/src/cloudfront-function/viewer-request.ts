@@ -5,6 +5,10 @@ import Response = AWSCloudFrontFunction.Response
 export const handler = async (event: Event): Promise<Request | Response> => {
   const request = event.request
   if (!request) throw new Error('Missing request.')
+  if (request.uri === '/') {
+    console.log(event.viewer)
+    console.log(JSON.stringify(request, null, 2))
+  }
   if (
     request.uri !== '/' &&
     (request.uri.endsWith('/') ||
