@@ -53,8 +53,12 @@ jest.mock('@aws-sdk/client-s3', () => ({
 }))
 
 describe('Store Message API Gateway function', () => {
-  const consoleLogSpy = jest.spyOn(console, 'log')
-  const consoleErrorSpy = jest.spyOn(console, 'error')
+  const consoleLogSpy = jest
+    .spyOn(console, 'log')
+    .mockImplementation(() => null)
+  const consoleErrorSpy = jest
+    .spyOn(console, 'error')
+    .mockImplementation(() => null)
   let expectedData: StoreMessage.Data
   afterAll(() => {
     delete process.env.SES_REGION

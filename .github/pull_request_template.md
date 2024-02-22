@@ -23,6 +23,7 @@ Before your PR can be reviewed, please read and check the following checkboxes (
 - [ ] :hammer:Breaking
 - [ ] :bug:Fix
 - [ ] :sparkles:New Feature
+- [ ] 🧪Testing
 - [ ] ⚙️Configuration
 - [ ] 📖Documentation
 
