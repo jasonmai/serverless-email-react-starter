@@ -163,7 +163,7 @@ No operations will be performed on the infrastructure if no changes have been ma
      1. **Remote state** (good for multiple contributors and not worrying about VC)
          * Provision the **Terraform Remote Backend** infrastructure and then initialize the **Terraform** project:
            ```shell
-           cd terraform-remote-backend
+           cd terraform_remote_backend
            terraform init
            terraform apply -var "domain_name=<YOUR_DOMAIN_NAME_HERE>"
            cd ../terraform
@@ -250,7 +250,7 @@ To destroy or tear down the infrastructure provisioned by this project, follow o
 `├──`[`lambdas`](./lambdas) — Serverless [AWS lambda functions](https://aws.amazon.com/lambda/) required for the backend infrastructure ([see here](#lambdas-))<br>
 `├──`[`scripts`](./scripts) — Automation bash scripts for provisioning the infrastructure and application ([see here](#scripts-))<br>
 `├──`[`terraform`](./terraform) — [Terraform](https://www.terraform.io/) modules and configs for provisioning the infra and app ([see here](#terraform-%EF%B8%8F))<br>
-`└──`[`terraform-remote-backend`](./terraform-remote-backend) — [Terraform](https://www.terraform.io/) code for provisioning remote state management<br>
+`└──`[`terraform_remote_backend`](./terraform_remote_backend) — [Terraform](https://www.terraform.io/) code for provisioning remote state management<br>
 
 ## Components 🧩
 There are **3 main components** to this project: [**App**](#app-), [**Lambdas**](#lambdas-), and

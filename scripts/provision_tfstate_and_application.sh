@@ -23,7 +23,7 @@ echo -e "    * ${BLUE}DynamoDB Table${RESET}: ${YELLOW}$state_table_name${RESET}
 press_to_continue
 
 if (
-    cd ../terraform-remote-backend || exit 1
+    cd ../terraform_remote_backend || exit 1
     terraform init && terraform apply -var "domain_name=$domain_name" -auto-approve
 ) then
     echo " "

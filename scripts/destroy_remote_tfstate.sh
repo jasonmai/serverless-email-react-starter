@@ -16,7 +16,7 @@ if [ -n "$DOMAIN_NAME" ]; then
 fi
 
 if (
-    cd ../terraform-remote-backend && eval "$destroy_cmd"
+    cd ../terraform_remote_backend && eval "$destroy_cmd"
 ) then
     echo " "
     echo -e "All ${PURPLE}infrastructure${RESET} has been ${GREEN}successfully${RESET} destroyed!"
